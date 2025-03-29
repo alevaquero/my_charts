@@ -132,7 +132,7 @@ prometheus:
       enabled: false
   server:
     nodeSelector:
-      kubernetes.io/hostname: k8s-node-1
+      kubernetes.io/hostname: k8s-node-2
     securityContext:
       runAsUser: 1000
       runAsNonRoot: true
