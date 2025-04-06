@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "siprproxy.fullname" . }}-registrar
+  labels:
+    {{- include "siprproxy.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  clusterIP: None # headless service
+  ports:
+    - port: {{ .Values.service.registrarPort }}
+      protocol: UDP
+      name: sip_reg_udp
+    - port: {{ .Values.service.registrarPort }}
+      protocol: TCP
+      name: sip_reg_tcp
+  selector:
+    {{- include "siprproxy.selectorLabels" . | nindent 4 }}

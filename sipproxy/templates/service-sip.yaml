@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "siprproxy.fullname" . }}-sip
+  labels:
+    {{- include "siprproxy.labels" . | nindent 4 }}
+spec:
+  type: NodePort
+  ports:
+    - port: {{ .Values.service.sipPort }}
+      targetPort: {{ .Values.service.sipPort }}
+      protocol: UDP
+      name: sip_udp
+      nodePort: {{ .Values.service.sipPort }}
+    - port: {{ .Values.service.sipPort }}
+      targetPort: {{ .Values.service.sipPort }}
+      protocol: TCP
+      name: sip_tcp
+      nodePort: {{ .Values.service.sipPort }}
+  selector:
+    {{- include "siprproxy.selectorLabels" . | nindent 4 }}
