@@ -30,16 +30,16 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: sip
+            - name: sip-tcp
               containerPort: {{ .Values.service.sipPort }}
               protocol: TCP
-            - name: sip
+            - name: sip-udp
               containerPort: {{ .Values.service.sipPort }}
               protocol: UDP
-            - name: sip-reg
+            - name: sip-reg-tcp
               containerPort: {{ .Values.service.registrarPort }}
-              protocol: UDP
-            - name: sip-reg
+              protocol: TCP
+            - name: sip-reg-udp
               containerPort: {{ .Values.service.registrarPort }}
               protocol: UDP
           {{- with .Values.livenessProbe }}
