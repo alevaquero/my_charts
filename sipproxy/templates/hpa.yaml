@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "siprproxy.fullname" . }}
+  name: {{ include "sipproxy.fullname" . }}
   labels:
-    {{- include "siprproxy.labels" . | nindent 4 }}
+    {{- include "sipproxy.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "siprproxy.fullname" . }}
+    name: {{ include "sipproxy.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

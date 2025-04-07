@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "siprproxy.fullname" . }}
+  name: {{ include "sipproxy.fullname" . }}
   labels:
-    {{- include "siprproxy.labels" . | nindent 4 }}
+    {{- include "sipproxy.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "siprproxy.selectorLabels" . | nindent 6 }} # has to match .spec.template.metadata.labels
+      {{- include "sipproxy.selectorLabels" . | nindent 6 }} # has to match .spec.template.metadata.labels
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,8 +18,8 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "siprproxy.selectorLabels" . | nindent 8 }} # has to match .spec.selector.matchLabels
-        # {{- include "siprproxy.labels" . | nindent 8 }}
+        {{- include "sipproxy.selectorLabels" . | nindent 8 }} # has to match .spec.selector.matchLabels
+        # {{- include "sipproxy.labels" . | nindent 8 }}
         # {{- with .Values.podLabels }}
         # {{- toYaml . | nindent 8 }}
         # {{- end }}
@@ -36,10 +36,10 @@ spec:
             - name: sip
               containerPort: {{ .Values.service.sipPort }}
               protocol: UDP
-            - name: sip_reg
+            - name: sip-reg
               containerPort: {{ .Values.service.registrarPort }}
               protocol: UDP
-            - name: sip_reg
+            - name: sip-reg
               containerPort: {{ .Values.service.registrarPort }}
               protocol: UDP
           {{- with .Values.livenessProbe }}
