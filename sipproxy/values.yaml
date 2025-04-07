@@ -127,4 +127,4 @@ container:
   command: "/bin/bash"
   command1: "-c"
   command2: "--" 
-  args: "/usr/local/sbin/opensips -M 3 -m 256 -F -f /usr/local/etc/opensips/opensips.cfg";while true; do echo Alejandro; sleep 10; done;" 
+  args: "/usr/local/sbin/opensips -M 3 -m 256 -F -f /usr/local/etc/opensips/opensips.cfg;while true; do echo Alejandro; sleep 10; done;" 
