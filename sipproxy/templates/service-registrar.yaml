@@ -10,9 +10,9 @@ spec:
   ports:
     - port: {{ .Values.service.registrarPort }}
       protocol: UDP
-      name: sip_reg_udp
+      name: sip-reg-udp
     - port: {{ .Values.service.registrarPort }}
       protocol: TCP
-      name: sip_reg_tcp
+      name: sip-reg-tcp
   selector:
     {{- include "siprproxy.selectorLabels" . | nindent 4 }}
