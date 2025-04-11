@@ -11,6 +11,7 @@ spec:
   selector:
     matchLabels:
       {{- include "sipproxy.selectorLabels" . | nindent 6 }} # has to match .spec.template.metadata.labels
+      app: sipproxy
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,6 +20,7 @@ spec:
       {{- end }}
       labels:
         {{- include "sipproxy.selectorLabels" . | nindent 8 }} # has to match .spec.selector.matchLabels
+        app: sipproxy
         # {{- include "sipproxy.labels" . | nindent 8 }}
         # {{- with .Values.podLabels }}
         # {{- toYaml . | nindent 8 }}
