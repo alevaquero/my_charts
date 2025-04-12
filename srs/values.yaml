@@ -104,17 +104,29 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 # Additional volumes on the output Deployment definition.
-volumes: []
+volumes:
+  - configMap:
+      defaultMode: 420
+      items:
+      - key: registration-scenario
+        path: reg.xml
+      name: srs
+    name: config-volume
 # - name: foo
 #   secret:
 #     secretName: mysecret
 #     optional: false
 
+registrationScenario: |
+  something here first line
+  something here second line
+  
+
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
+volumeMounts: 
+  - name: config-volume
+    mountPath: "/scenarios"
+    readOnly: true
 
 nodeSelector: {}
 
@@ -126,4 +138,5 @@ container:
   command: "sh"
   command1: "-c"
   command2: "--" 
-  args: "while true; do echo SRS keepalive; sleep 10; done;" 
+  args: "while true; do echo SRS keepalive; sleep 10; done;"
+

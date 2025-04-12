@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ index .Values.volumes 0 | .configMap.name }}
+data:
+  {{ index (index .Values.volumes 0).configMap.items 0 | .key }}: |
+    {{- toYaml .Values.registrationScenario | nindent 4 }}
