@@ -121,3 +121,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+container:
+  command: "/bin/bash"
+  command1: "-c"
+  command2: "--" 
+  args: "while true; do echo SRS keepalive; sleep 10; done;" 
