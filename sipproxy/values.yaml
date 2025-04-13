@@ -166,7 +166,7 @@ opensipsConfig: |
   syslog_facility=LOG_LOCAL0
   open_files_limit=2000
 
-  udp_workers=4
+  udp_workers=2
 
   /* uncomment the next line to enable the auto temporary blacklisting of 
     not available destinations (default disabled) */
@@ -177,6 +177,7 @@ opensipsConfig: |
   #dns_try_ipv6=yes
 
   socket=udp:127.0.0.1:5060   # CUSTOMIZE ME
+  socket=udp:127.0.0.1:30070   # CUSTOMIZE ME
 
   ####### Modules Section ########
 
@@ -209,7 +210,7 @@ opensipsConfig: |
 
   #### FIFO Management Interface
   loadmodule "mi_fifo.so"
-  modparam("mi_fifo", "fifo_name", "/run/opensips/opensips_fifo")
+  modparam("mi_fifo", "fifo_name", "/run/opensips_fifo")
   modparam("mi_fifo", "fifo_mode", 0666)
 
   #### USeR LOCation module
