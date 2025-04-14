@@ -157,7 +157,7 @@ opensipsConfig: |
   ####### Global Parameters #########
 
   /* uncomment the following lines to enable debugging */
-  #debug_mode=yes
+  debug_mode=yes
 
   log_level=3
   xlog_level=3
@@ -177,7 +177,7 @@ opensipsConfig: |
   #dns_try_ipv6=yes
 
   socket=udp:127.0.0.1:5060   # CUSTOMIZE ME
-  socket=udp:127.0.0.1:30070   # CUSTOMIZE ME
+  socket=udp:*:30070   # CUSTOMIZE ME
 
   ####### Modules Section ########
 
@@ -235,6 +235,12 @@ opensipsConfig: |
   modparam("acc", "detect_direction", 0)
 
   loadmodule "proto_udp.so"
+
+  loadmodule "httpd.so"
+  #modparam("httpd", "ip", "127.0.0.1")
+  #modparam("httpd", "port", 8000)
+  loadmodule "mi_http.so"
+  
 
   ####### Routing Logic ########
 
