@@ -12,7 +12,7 @@ spec:
     matchLabels:
       {{- include "sipproxy.selectorLabels" . | nindent 6 }} # has to match .spec.template.metadata.labels
       app: sipproxy
-  serviceName: {{ include "sipproxy.fullname" . }}-registrar # has to match headless Service metadata.name (added later, so not sure)
+  serviceName: {{ include "sipproxy.fullname" . }}-registrar # has to match headless Service metadata.name (this was needed!!!)
   template:
     metadata:
       {{- with .Values.podAnnotations }}
