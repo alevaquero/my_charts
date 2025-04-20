@@ -5,7 +5,8 @@ metadata:
   labels:
     {{- include "sipproxy.labels" . | nindent 4 }}
 spec:
-  type: ClusterIP
+  # type: ClusterIP
+  type: NodePort
   clusterIP: None # headless service
   # publishNotReadyAddresses: true
   ports:
