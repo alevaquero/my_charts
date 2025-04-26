@@ -177,7 +177,8 @@ opensipsConfig: |
   #dns_try_ipv6=yes
 
   # socket=udp:127.0.0.1:5060   # CUSTOMIZE ME
-  socket=udp:*:30060   # CUSTOMIZE ME
+  socket=udp:*:30060
+  socket=udp:*:30070
 
   ####### Modules Section ########
 
