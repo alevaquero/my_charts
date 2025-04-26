@@ -18,3 +18,4 @@ spec:
       name: sip-tcp
   selector:
     {{- include "sipproxy.selectorLabels" . | nindent 4 }}
+    app: sipproxy
