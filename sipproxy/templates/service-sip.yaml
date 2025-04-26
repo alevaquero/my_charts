@@ -13,11 +13,11 @@ spec:
     - port: {{ .Values.service.sipPort }}
       protocol: UDP
       name: sip-udp
-      nodePort: {{ .Values.service.sipPort }}
+      nodePort: 30040
     - port: {{ .Values.service.sipPort }}
       protocol: TCP
       name: sip-tcp
-      nodePort: {{ .Values.service.sipPort }}
+      nodePort: 30040
   selector:
     {{- include "sipproxy.selectorLabels" . | nindent 4 }}
     app: sipproxy
