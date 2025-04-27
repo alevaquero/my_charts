@@ -175,10 +175,8 @@ registrationScenario: |
         Content-Length: [len]
       ]]>
     </send>
-    <recv response="200"
+    <recv response="200" next="1"
     </recv>
-
-    <nop next="1"/>
 
   </scenario>  
 
