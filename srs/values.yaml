@@ -141,7 +141,44 @@ registrationScenario: |
     </recv>
     
     <pause milliseconds="28000"/>
-    <pause milliseconds="1" next="1"/>
+
+    <send retrans="500">
+      <![CDATA[
+        REGISTER sip:[remote_ip]:[remote_port] SIP/2.0
+        Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+        From: <sip:srs@pindrop.com>;tag=[pid]SIPpTag00[call_number]
+        To: <sip:srs@pindrop.com>
+        Call-ID: [call_id]
+        CSeq: [cseq] REGISTER
+        Contact: sip:srs@[local_ip]:[local_port];expires=30
+        Max-Forwards: 70
+        Content-Type: application/sdp
+        Content-Length: [len]
+      ]]>
+    </send>
+    <recv response="200"
+    </recv>
+
+    <pause milliseconds="28000"/>
+
+    <send retrans="500">
+      <![CDATA[
+        REGISTER sip:[remote_ip]:[remote_port] SIP/2.0
+        Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+        From: <sip:srs@pindrop.com>;tag=[pid]SIPpTag00[call_number]
+        To: <sip:srs@pindrop.com>
+        Call-ID: [call_id]
+        CSeq: [cseq] REGISTER
+        Contact: sip:srs@[local_ip]:[local_port];expires=30
+        Max-Forwards: 70
+        Content-Type: application/sdp
+        Content-Length: [len]
+      ]]>
+    </send>
+    <recv response="200"
+    </recv>
+
+    <nop next="1"/>
 
   </scenario>  
 
@@ -161,5 +198,5 @@ container:
   command: "sh"
   command1: "-c"
   command2: "--" 
-  args: "sipp -bg -r 0.5 -sf /scenarios/reg.xml sipproxy-0.sipproxy-registrar.sip.svc.cluster.local:30070; sipp -bg -r 0.5 -sf /scenarios/reg.xml sipproxy-1.sipproxy-registrar.sip.svc.cluster.local:30070; while true; do echo SRS keepalive; sleep 10; done;"
+  args: "sipp -bg -m 1 -sf /scenarios/reg.xml sipproxy-0.sipproxy-registrar.sip.svc.cluster.local:30070; sipp -bg -m 1 -sf /scenarios/reg.xml sipproxy-1.sipproxy-registrar.sip.svc.cluster.local:30070; while true; do echo SRS keepalive; sleep 10; done;"
 
