@@ -137,7 +137,7 @@ registrationScenario: |
         Content-Length: [len]
       ]]>
     </send>
-    <recv response="200"
+    <recv response="200">
     </recv>
     
     <pause milliseconds="28000"/>
@@ -156,7 +156,7 @@ registrationScenario: |
         Content-Length: [len]
       ]]>
     </send>
-    <recv response="200"
+    <recv response="200">
     </recv>
 
     <pause milliseconds="28000"/>
@@ -175,7 +175,7 @@ registrationScenario: |
         Content-Length: [len]
       ]]>
     </send>
-    <recv response="200" next="1"
+    <recv response="200" next="1">
     </recv>
 
   </scenario>  
@@ -196,5 +196,5 @@ container:
   command: "sh"
   command1: "-c"
   command2: "--" 
-  args: "sipp -bg -m 10 -r 0.01 -sf /scenarios/reg.xml sipproxy-0.sipproxy-registrar.sip.svc.cluster.local:30070; sipp -bg -m 1 -r 0.01 -sf /scenarios/reg.xml sipproxy-1.sipproxy-registrar.sip.svc.cluster.local:30070; while true; do echo SRS keepalive; sleep 10; done;"
+  args: "sipp -bg -m 1 -sf /scenarios/reg.xml sipproxy-0.sipproxy-registrar.sip.svc.cluster.local:30070; sipp -bg -m 1 -sf /scenarios/reg.xml sipproxy-1.sipproxy-registrar.sip.svc.cluster.local:30070; while true; do echo SRS keepalive; sleep 10; done;"
 
