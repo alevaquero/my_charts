@@ -140,7 +140,8 @@ registrationScenario: |
     <recv response="200"
     </recv>
     
-    <pause milliseconds="28000" next="1"/>
+    <pause milliseconds="28000"/>
+    <pause milliseconds="1" next="1"/>
 
   </scenario>  
 
