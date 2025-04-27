@@ -140,43 +140,9 @@ registrationScenario: |
     <recv response="200">
     </recv>
     
-    <pause milliseconds="28000"/>
+    <pause milliseconds="20000"/>
 
-    <send retrans="500">
-      <![CDATA[
-        REGISTER sip:[remote_ip]:[remote_port] SIP/2.0
-        Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-        From: <sip:srs@pindrop.com>;tag=[pid]SIPpTag00[call_number]
-        To: <sip:srs@pindrop.com>
-        Call-ID: [call_id]
-        CSeq: [cseq] REGISTER
-        Contact: sip:srs@[local_ip]:[local_port];expires=30
-        Max-Forwards: 70
-        Content-Type: application/sdp
-        Content-Length: [len]
-      ]]>
-    </send>
-    <recv response="200">
-    </recv>
-
-    <pause milliseconds="28000"/>
-
-    <send retrans="500">
-      <![CDATA[
-        REGISTER sip:[remote_ip]:[remote_port] SIP/2.0
-        Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-        From: <sip:srs@pindrop.com>;tag=[pid]SIPpTag00[call_number]
-        To: <sip:srs@pindrop.com>
-        Call-ID: [call_id]
-        CSeq: [cseq] REGISTER
-        Contact: sip:srs@[local_ip]:[local_port];expires=30
-        Max-Forwards: 70
-        Content-Type: application/sdp
-        Content-Length: [len]
-      ]]>
-    </send>
-    <recv response="200" next="1">
-    </recv>
+    <nop next="1"/>
 
   </scenario>  
 
