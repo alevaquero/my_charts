@@ -294,11 +294,14 @@ opensipsConfig: |
       if (is_myself("$fd")) {
             
       } else {
+        # force all calls to be local
+        $rd = $Ri
+
         # if caller is not local, then called number must be local        
-        if (!is_myself("$rd")) {
-          send_reply(403,"Relay Forbidden");
-          exit;
-        }
+        #if (!is_myself("$rd")) {
+        #  send_reply(403,"Relay Forbidden");
+        #  exit;
+        #}
       }
     }
 
