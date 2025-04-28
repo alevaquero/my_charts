@@ -295,7 +295,7 @@ opensipsConfig: |
             
       } else {
         # force all calls to be local
-        $rd = $Ri;
+        $rd = "127.0.0.1";
 
         # if caller is not local, then called number must be local        
         #if (!is_myself("$rd")) {
