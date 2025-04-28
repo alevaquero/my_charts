@@ -5,3 +5,5 @@ metadata:
 data:
   {{ (index (index .Values.volumes 0).configMap.items 0).key }}:
     {{- toYaml .Values.registrationScenario | nindent 4 }}
+  {{ (index (index .Values.volumes 0).configMap.items 1).key }}:
+    {{- toYaml .Values.uasScenario | nindent 4 }}
